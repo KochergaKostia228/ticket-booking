@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Create Ticket </title>
+</head>
+<body>
+<h3>Enter ticket data:</h3>
+<form th:action="@{/api/v1/createTicketPack}" th:method="post" th:object="${ticketPackDTO}" >
+
+
+    <input type="number" th:field="*{cost}"/>
+    <input type="number" th:field="*{count}"/>
+
+    <button type="submit">Create TicketPack</button>
+</form>
+
+</body>
+
+</html>

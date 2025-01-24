@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Customers Get </title>
+    <style>
+
+    </style>
+</head>
+<body>
+<table border = "1">
+
+    <a href="/api/v1/createEvent">Создать события</a>
+
+    <tr>
+        <th>Названия события</th>
+        <th>Адрес проведения события</th>
+        <th>Дата начала события</th>
+    </tr>
+    <tr th:each = "event : ${events}">
+        <td th:utext="${event.name}">...</td>
+        <td th:utext="${event.place.address}">...</td>
+        <td th:utext="${event.event_date}">...</td>
+        <td><a th:href="@{/api/v1/editEvent/{id}(id=${event.id})}">Редактировать события</a></td>
+    </tr>
+</table>
+
+</body>
+</html>

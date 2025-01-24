@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Create Event </title>
+</head>
+<body>
+<h3>Enter event data:</h3>
+<form th:action="@{/api/v1/event/create}" method='POST' th:object="${eventCreationDTO}">
+
+    <label for="name">Event Name:</label>
+    <input type="text" id="name" th:field="*{eventName}" placeholder="Enter event name" required/>
+    <br/>
+
+    <label for="eventDate">Event Date:</label>
+    <input type="date" id="eventDate" th:field="*{eventDate}" required/>
+    <br/>
+
+    <h3>Event Place</h3>
+    <label for="name">Place Name:</label>
+    <input type="text" id="name1" th:field="*{place.name}" placeholder="Enter place name" required/>
+    <br/>
+
+    <label for="adress">Place Address:</label>
+    <input type="text" id="adress" th:field="*{place.address}" placeholder="Enter place address" required/>
+    <br/>
+
+    <button type="submit">Create Event</button>
+
+    <a>Add ticket pack</a>
+
+</form>
+
+<table border = "1">
+
+    <tr>
+        <th>Cost</th>
+        <th>Count</th>
+    </tr>
+    <tr th:each = "ticketPack : ${eventCreationDTO.getTicketPacks()}">
+        <td th:utext="${ticketPack.cost}">...</td>
+        <td th:utext="${ticketPack.count}">...</td>
+    </tr>
+</table>
+
+</body>
+
+</html>
